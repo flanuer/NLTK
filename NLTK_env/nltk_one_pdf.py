@@ -25,4 +25,19 @@ print(first_page2.extractText())
 
 print("++++++++++++++++ sent tokenize +++++++++++++++++++++++++++++++++++")
 
-print(sent_tokenize(pdf_document2))
+#Here try to extract pdf file into text for nltk to tokenize
+
+from textblob import TextBlob
+from textblob.np_extractors import ConllExtractor
+extractor = ConllExtractor()
+blob = TextBlob("Python is a high-level programming language.", np_extractor=extractor)
+print(blob.noun_phrases)
+
+print("-------------------------------------------------------------------")
+
+blob = TextBlob(first_page, np_extractor=extractor)
+print(blob.noun_phrases)
+
+
+print("Now try with PDF")
+
